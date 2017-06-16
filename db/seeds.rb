@@ -4,6 +4,9 @@ require_relative('../models/Transaction.rb')
 require("pry")
 
 # do I need to delete these .delete_all calls after testing the app ????
+Transaction.delete_all()
+Tag.delete_all()
+Merchant.delete_all()
 
 tag1 = Tag.new({"name" => "food"})
 tag2 = Tag.new({"name" => "social"})
@@ -23,11 +26,31 @@ merchant2.save()
 merchant3.save()
 merchant4.save()
 
-binding.pry
-
-
-
-
 transaction1 = Transaction.new({
-
+  "value" => 5067,
+  "tag_id" => tag1.id,
+  "merchant_id" => merchant1.id
   })
+transaction2 = Transaction.new({
+  "value" => 4275,
+  "tag_id" => tag2.id,
+  "merchant_id" => merchant2.id
+  })
+transaction3 = Transaction.new({
+  "value" => 1502,
+  "tag_id" => tag3.id,
+  "merchant_id" => merchant3.id
+  })
+transaction4 = Transaction.new({
+  "value" => 809,
+  "tag_id" => tag1.id,
+  "merchant_id" => merchant1.id
+  })
+transaction1.save()
+transaction2.save()
+transaction3.save()
+transaction4.save()
+
+
+binding.pry
+nil
