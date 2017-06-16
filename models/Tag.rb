@@ -21,9 +21,20 @@ class Tag
     SqlRunner.run(sql)
   end
 
-  def self.all()
+  # def self.all()
+  #   sql = "SELECT * FROM tags"
+  #   SqlRunner.run(sql).map {|tag| Merchant.new(tag)}
+  # end
+
+  def self.all
     sql = "SELECT * FROM tags"
-    SqlRunner.run(sql).map {|tag| Merchant.new(tag)}
+    tags = map_tags(sql)
+    return tags
+  end 
+
+  def self.map_tags(sql)
+    tags = SqlRunner.run(sql)
+    return tags.map { |tag| Tag.new(tag) }
   end
 
 end

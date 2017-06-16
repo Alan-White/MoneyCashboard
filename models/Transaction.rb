@@ -24,9 +24,20 @@ class Transaction
     SqlRunner.run(sql)
   end
 
-  def self.all()
+  # def self.all()
+  #   sql = "SELECT * FROM transactions"
+  #   SqlRunner.run(sql).map {|transaction| Transaction.new(transaction)}
+  # end
+
+  def self.all
     sql = "SELECT * FROM transactions"
-    SqlRunner.run(sql).map {|transaction| Transaction.new(transaction)}
+    transactions = map_transactions(sql)
+    return transactions
+  end 
+
+  def self.map_transactions(sql)
+    transactions = SqlRunner.run(sql)
+    return transactions.map { |transaction| Transaction.new(transaction) }
   end
 
 

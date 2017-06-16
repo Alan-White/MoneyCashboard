@@ -21,9 +21,20 @@ class Merchant
     SqlRunner.run(sql)
   end
 
-  def self.all()
+  # def self.all()
+  #   sql = "SELECT * FROM merchants"
+  #   SqlRunner.run(sql).map {|merchant| Merchant.new(merchant)}
+  # end
+
+  def self.all
     sql = "SELECT * FROM merchants"
-    SqlRunner.run(sql).map {|merchant| Merchant.new(merchant)}
+    merchants = map_merchants(sql)
+    return merchants
+  end 
+
+  def self.map_merchants(sql)
+    merchants = SqlRunner.run(sql)
+    return merchants.map { |merchant| Merchant.new(merchant) }
   end
 
 end
