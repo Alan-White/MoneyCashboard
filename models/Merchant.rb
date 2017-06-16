@@ -21,4 +21,9 @@ class Merchant
     SqlRunner.run(sql)
   end
 
+  def self.all()
+    sql = "SELECT * FROM merchants"
+    SqlRunner.run(sql).map {|merchant| Merchant.new(merchant)}
+  end
+
 end

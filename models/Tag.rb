@@ -21,4 +21,9 @@ class Tag
     SqlRunner.run(sql)
   end
 
+  def self.all()
+    sql = "SELECT * FROM tags"
+    SqlRunner.run(sql).map {|tag| Merchant.new(tag)}
+  end
+
 end
