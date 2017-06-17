@@ -1,0 +1,22 @@
+<h2>Add a new transaction</h2>
+<h3>THIS IS THE NEW.ERB</h3>
+
+<form method="POST" action="/transactions">
+
+  <label for="value"> Value of transaction</label>
+  <input type="integer" name="value" id="value">
+
+  <label for="banana">Select Tag</label>
+    <select name="tag_id" id="banana"><% @tags.each do |tag| %>
+      <option value=<%= tag.id %>><%= tag.name %></option>
+    <% end %>
+    </select>
+
+  <label for="orange"> Select Merchant</label>
+  <select name="merchant_id" id="orange"><% @merchants.each do |merchant| %>
+    <option value=<%= merchant.id %>><%= merchant.name %></option>
+  <% end %>
+  </select>
+
+  
+</form>

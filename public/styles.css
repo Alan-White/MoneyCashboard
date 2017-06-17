@@ -1,0 +1,101 @@
+ header {
+    background-color: none;
+    /*display:inline-block; */
+    text-align: center;
+   /* position: static;*/
+    width: 100%;
+    margin: 0px 0px 0px 0px;
+}
+header h1, h2{
+  color: blue;
+  background: white;
+  /*max-width: 50%;*/
+
+  text-align: center;
+  position: center;
+}
+body {
+      background: url("images/Fiver.jpg") no-repeat fixed left top;
+      background-image width: 100%;
+      background-image position: center; 
+      
+      color: none;
+      border: none;
+      margin:0px;
+      font-family: Arial, Helvetica, sans-serif;
+
+}
+
+ 
+/*header img {
+    float: right;
+    margin: 0px 10px 10px 10px;
+}*/
+
+h1 {
+    text-align:center;
+
+}
+
+h3 {
+    text-align:center;
+    color: blue;
+}
+
+
+ul {
+    list-style-type: none;
+    margin: 0px 0px 0px 10px;
+    padding: 0px 0px 0px 0px;
+    width: 125px;     
+    background-color:lightgrey;
+
+}
+
+li {
+    display: block;
+    padding: 10px 10px 10px 10px;
+    margin: 0px 0px 0px 0px;
+    text-align:center;
+}
+
+ul a {
+    display: block;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+    text-align:center;
+}
+
+
+
+a:link, a:visited {
+  background-color: #FFFFFF;
+  color: blue;
+  border:1px solid blue; 
+  border-radius:20px; 
+  padding:5px;
+  text-decoration: none;
+}
+
+a:hover {
+  background-color: lightblue;
+  color: #FFFFFF;
+}
+
+a:active {
+  background-color: yellow;
+  color: #FFFFFF;
+}
+
+/*h2 {
+   color:green;
+   margin-left: 20px;*/
+}
+
+
+footer {
+    width:100%;
+     background-color:lightgrey;
+     padding: 0px 0px 0px 20px; 
+    
+}

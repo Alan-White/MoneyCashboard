@@ -1,0 +1,15 @@
+<h2>Below is a list of all your Transactions</h2>
+<h1>THIS IS THE INDEX.ERB</h1>
+
+<div>
+  <% @transactions.each do |transaction| %>
+
+    <p>Transaction id: <%= transaction.id %></p>
+    <p>Value: <%= transaction.value %></p>
+    <p>Tag id: <%= transaction.tag_id %></p>
+    <p>Merchant id: <%= transaction.merchant_id %></p>
+    <hr/>
+  <% end %>
+
+</div>
+
