@@ -61,5 +61,7 @@ class Transaction
      return all_values
     end
 
+    # sql = "SELECT value FROM transactions INNER JOIN merchants ON transactions.merchant_id = merchant.id"
+
 
 end
