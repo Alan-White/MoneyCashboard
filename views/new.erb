@@ -1,3 +1,4 @@
+
 <h2>Add a new transaction</h2>
 <h3>THIS IS THE NEW.ERB</h3>
 
@@ -7,7 +8,6 @@
   <input type="text" name="value" id="add_value">
 
 
-
   <label for="select_tag">Select Tag</label>
       <select name="tag_id" id="select_tag"><% @tags.each do |tag| %>
       <option value=<%= tag.id %>><%= tag.name %></option>
@@ -15,12 +15,18 @@
       </select>
 
 
-
   <label for="select_merchant"> Select Merchant</label>
-  <select name="merchant_id" id="select_merchant"><% @merchants.each do |merchant| %>
-    <option value=<%= merchant.id %>><%= merchant.name %></option>
-  <% end %>
+      <select name="merchant_id" id="select_merchant"><% @merchants.each do |merchant| %>
+      <option value=<%= merchant.id %>><%= merchant.name %></option>
+      <% end %>
   </select>
+
+
+
+
+
+
+
 
   
 </form>
