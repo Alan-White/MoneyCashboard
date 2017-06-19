@@ -23,7 +23,9 @@ end
 # ------------------------------------------
 
 get "/transactions/:id/edit" do
-  @transaction = Transaction.find(params)["id"].to_i
+  @transaction = Transaction.find((params)["id"].to_i)
+  @tags = Tag.all
+  @merchants = Merchant.all
   erb(:edit)
 end
 
