@@ -12,12 +12,12 @@
     <% end %>
   </select>
 
+  <label for="select-merchant">Edit merchant</label>
+  <select id= "select-merchant" name="merchant_id"><% @merchants.each do |merchant| %>
+    <option value=<%= merchant.id %> <%= "selected" if @transaction.merchant_id() == merchant.id %>><%= merchant.name %></option>
+    <% end %>
+  </select>
 
-    <label for="select_merchant"> Select Merchant</label>
-      <select name="merchant_id" id="select_merchant"><% @merchants.each do |merchant| %>
-      <option value=<%= merchant.id %>><%= merchant.name %></option>
-      <% end %>
-      </select>
 
   <input type="submit" value="Save this edited transaction"/>
 
