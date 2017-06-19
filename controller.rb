@@ -34,3 +34,11 @@ post "/transactions/:id" do
   transaction.update()
   redirect to("/transactions")
 end
+
+# ------------------------------------------
+
+post "/transactions/:id/delete" do
+  transaction = Transaction.find(params["id"].to_i)
+  transaction.delete()
+  redirect to("/transactions")
+end
