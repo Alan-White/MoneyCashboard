@@ -1,7 +1,6 @@
+<h2>Edit an existing transaction here.</h2>
 
-<h2>Add a new transaction</h2>
-
-<form method="POST" action="/transactions"> 
+<form method="POST" action="/transactions/<%= @transaction.id  %>"> 
 
     <label for="add_value"> Value of transaction</label>
       <input type="text" name="value" id="add_value">
@@ -20,6 +19,6 @@
       <% end %>
       </select>
 
-  <input type="submit" value="Add this transaction"/>
+  <input type="submit" value="Save this edited transaction"/>
 
 </form>

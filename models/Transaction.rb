@@ -29,6 +29,14 @@ class Transaction
     SqlRunner.run( sql )
   end
 
+  def self.find( id )
+    sql = "SELECT * FROM transactions WHERE id=#{id};"
+    transaction = SqlRunner.run( sql )
+    result = Transaction.new( transaction.first )
+    return result
+  end
+
+
   # def self.all()
   #   sql = "SELECT * FROM transactions"
   #   SqlRunner.run(sql).map {|transaction| Transaction.new(transaction)}
@@ -73,4 +81,11 @@ class Transaction
     #    all_values = SqlRunner.run(sql).select {|transaction| Transaction.new(transaction)}
     #    return all_values
     #   end
+#--------------------------------------------
+
+    def update()
+      sql = "UPDATE transactions SET (value, tag_id, merchant_id) = (#{@value}, #{@tag_id}, #{@merchant_id} )WHERE id = #{@id}"
+      SqlRunner.run(sql)
+    end
+
 end

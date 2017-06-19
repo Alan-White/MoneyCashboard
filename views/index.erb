@@ -10,6 +10,8 @@
     <p>Value: <%= transaction.value %></p>
     <p>Tag id: <%= transaction.tag_id %></p>
     <p>Merchant id: <%= transaction.merchant_id %></p>
+    <p><a href="/transactions/:id/edit">Edit this transaction</a></p>
+    <p><a href="/transactions/:id/delete">Delete this transaction</a></p>
     <hr/>
   <% end %>
 </div>

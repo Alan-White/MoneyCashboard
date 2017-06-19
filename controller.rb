@@ -9,16 +9,26 @@ get '/transactions' do
   erb(:index)
 end
 
-get '/transactions/new' do
-  @tags = Tag.all
-  @merchants = Merchant.all
-  erb(:new)
-end
-
-
 post "/transactions" do
   @transaction = Transaction.new(params)
   @transaction.save()
   erb(:create)
 end
 
+get '/transactions/new' do
+  @tags = Tag.all
+  @merchants = Merchant.all
+  erb(:new)
+end
+# ------------------------------------------
+
+get "/transactions/:id/edit" do
+  @transaction = Transaction.find(params)["id"].to_i
+  erb(:edit)
+end
+
+post "/transactions/:id" do
+  transaction = Transaction.new(params)
+  transaction.update()
+  redirect to("/transactions")
+end
