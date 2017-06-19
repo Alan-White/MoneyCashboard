@@ -15,7 +15,7 @@ class Transaction
   def save()
     sql = "INSERT INTO transactions (value, tag_id, merchant_id) VALUES (#{@value}, #{@tag_id}, #{@merchant_id}) RETURNING *"
     result = SqlRunner.run(sql)
-    id = result.first['id']
+    id = result.first['id'].to_i
     @id = id
   end
 
@@ -39,29 +39,33 @@ class Transaction
     transactions = SqlRunner.run(sql)
     return transactions.map { |transaction| Transaction.new(transaction) }
   end
-#-----------------------------------------------
+#----------------------------------------------
 # BELOW: need to find total cost of all transactions.
   def self.total_spent()
-   sql = "SELECT value FROM transactions"
-     all_values = SqlRunner.run(sql).select {|transaction| Transaction.new(transaction)}
-     return all_values
+   all_values = Transaction.all
+     return all_values.sum{|orange| orange.value}
     end
 
+# This was Alan's attempt which returned 
+# => [{"value"=>"5067"}, {"value"=>"4275"}, {"value"=>"1502"}, {"value"=>"809"}]
   # def self.total_spent()
-  #   sql = "SELECT value FROM transactions"
-  #   total = map_transactions(sql)
-  #   return total
-  # end
-#-----------------------------------------------
+  # sql = "SELECT value FROM transactions"
+  #   all_values = SqlRunner.run(sql).select {|transaction| Transaction.new(transaction)}
+  #   return all_values
+  #  end
+#---------------------------------------------
 
   # BELOW: need to find total cost of transactions by tag.
-  def self.total_tag_spend()
-   sql = "SELECT value FROM transactions WHERE tag_id = tag.id"
-     all_values = SqlRunner.run(sql).select {|transaction| Transaction.new(transaction)}
-     return all_values
+  def self.total_tag_spend(tag_id)
+   sql = "SELECT value FROM transactions WHERE tag_id = #{tag_id}"
+     all_values = SqlRunner.run(sql).map {|banana| Transaction.new(banana)}
+     return all_values.sum{|banana| banana.value}
     end
 
-    # sql = "SELECT value FROM transactions INNER JOIN merchants ON transactions.merchant_id = merchant.id"
-
-
+# Below is Alan's attempt which didn't work.
+    # def self.total_tag_spend()
+    #  sql = "SELECT value FROM transactions WHERE tag_id = tag.id"
+    #    all_values = SqlRunner.run(sql).select {|transaction| Transaction.new(transaction)}
+    #    return all_values
+    #   end
 end

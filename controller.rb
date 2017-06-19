@@ -11,12 +11,10 @@ end
 
 get '/transactions/new' do
   @tags = Tag.all
-  erb(:new)
-end
-get '/transactions/new' do
   @merchants = Merchant.all
   erb(:new)
 end
+
 
 post "/transactions" do
   @transaction = Transaction.new(params)
