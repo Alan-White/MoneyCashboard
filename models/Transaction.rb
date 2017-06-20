@@ -10,7 +10,7 @@ class Transaction
 
   def initialize(options)
     @id = options['id'].to_i
-    @value = options['value'].to_i
+    @value = options['value'].to_f
     @tag_id = options['tag_id'].to_i
     @merchant_id = options['merchant_id'].to_i
   end
@@ -23,14 +23,14 @@ class Transaction
   end
 
   def merchant()
-    sql = "SELECT * FROM merchants WHERE id = #{@tag_id}"
+    sql = "SELECT * FROM merchants WHERE id = #{@merchant_id}"
     merchant = SqlRunner.run(sql)
     result = Merchant.new(merchant.first)
     return result
   end
 
   def save()
-    sql = "INSERT INTO transactions (value, tag_id, merchant_id) VALUES (#{@value}, #{@tag_id}, #{@merchant_id}) RETURNING *"
+    sql = "INSERT INTO transactions (value, tag_id, merchant_id) VALUES (#{@value*100}, #{@tag_id}, #{@merchant_id}) RETURNING *"
     result = SqlRunner.run(sql)
     id = result.first['id'].to_i
     @id = id
@@ -101,7 +101,7 @@ class Transaction
 #--------------------------------------------
 
     def update()
-      sql = "UPDATE transactions SET (value, tag_id, merchant_id) = (#{@value}, #{@tag_id}, #{@merchant_id} )WHERE id = #{@id}"
+      sql = "UPDATE transactions SET (value, tag_id, merchant_id) = (#{@value*100}, #{@tag_id}, #{@merchant_id} )WHERE id = #{@id}"
       SqlRunner.run(sql)
     end
 

@@ -3,7 +3,7 @@
 <form method="POST" action="/transactions/<%= @transaction.id  %>"> 
 
   <label for="add_value"> Value of transaction</label>
-  <input id="add_value" type="text" name="value" value ="<%= @transaction.value %>">
+  <input id="add_value" type="text" name="value" value ="<%= sprintf('%.2f', @transaction.value/100.00) %>">
 
 
   <label for="choose-tag">Edit tag</label>

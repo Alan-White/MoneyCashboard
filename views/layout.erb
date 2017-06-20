@@ -22,12 +22,14 @@
     </ul>
   </div>
 
-  <div>
-    <p>Total spend on everything: <%= Transaction.total_spent %></p>
-    <p>Total spend on food: <%= Transaction.total_tag_spend(1) %></p>
-    <p>Total spend on social: <%= Transaction.total_tag_spend(2) %></p>
-    <p>Total spend on transport: <%= Transaction.total_tag_spend(3) %></p>
-    <p>Total spend on holidays: <%= Transaction.total_tag_spend(4) %></p>
+<!-- Below: the total_spent is /100 because the input on the new transaction form has no decimal point. i.e. the value is inserted in pence.
+ -->  
+ <div>
+    <p>Total spend on everything: £ <%= sprintf('%.2f',Transaction.total_spent/100) %></p>
+    <p>Total spend on food: £ <%= sprintf('%.2f',Transaction.total_tag_spend(1)/100) %></p>
+    <p>Total spend on social: £ <%= sprintf('%.2f',Transaction.total_tag_spend(2)/100) %></p>
+    <p>Total spend on transport: £ <%= sprintf('%.2f',Transaction.total_tag_spend(3)/100) %></p>
+    <p>Total spend on holidays: £ <%= sprintf('%.2f',Transaction.total_tag_spend(4)/100) %></p>
   </div>
 
 
