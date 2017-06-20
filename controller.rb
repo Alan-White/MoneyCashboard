@@ -6,6 +6,7 @@ require_relative('./models/merchant.rb')
 
 get '/transactions' do
   @transactions = Transaction.all
+
   erb(:index)
 end
 

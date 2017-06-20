@@ -1,4 +1,7 @@
 require_relative('../db/sql_runner')
+require_relative('tag.rb')
+require_relative('merchant.rb')
+
 
 class Transaction
   
@@ -10,6 +13,20 @@ class Transaction
     @value = options['value'].to_i
     @tag_id = options['tag_id'].to_i
     @merchant_id = options['merchant_id'].to_i
+  end
+
+  def tag()
+    sql = "SELECT * FROM tags WHERE id = #{@tag_id}"
+    tag = SqlRunner.run(sql)
+    result = Tag.new(tag.first)
+    return result
+  end
+
+  def merchant()
+    sql = "SELECT * FROM merchants WHERE id = #{@tag_id}"
+    merchant = SqlRunner.run(sql)
+    result = Merchant.new(merchant.first)
+    return result
   end
 
   def save()

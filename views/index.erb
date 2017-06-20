@@ -8,13 +8,12 @@
 
     <p>Transaction id: <%= transaction.id %></p>
     <p>Value: <%= transaction.value %></p>
-    <p>Tag id: <%= transaction.tag_id %></p>
-    <p>Merchant id: <%= transaction.merchant_id %></p>
+    <p>Tag: <%= transaction.tag.name %></p>
+    <p>Merchant: <%= transaction.merchant.name %></p>
     <p><a href="/transactions/<%= transaction.id %>/edit">Edit this transaction</a></p>
     <p><a href="/transactions/<%= transaction.id %>/delete">Delete this transaction</a></p>
     <hr/>
   <% end %>
 </div>
-<!-- Want to view tag and merchant names here, not their id's.
-Want to view most recent transaction first, not last. -->
+
 
