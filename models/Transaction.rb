@@ -83,9 +83,9 @@ class Transaction
   #   all_values = SqlRunner.run(sql).select {|transaction| Transaction.new(transaction)}
   #   return all_values
   #  end
+
 #---------------------------------------------
 
-  # BELOW: need to find total cost of transactions by tag.
   def self.total_tag_spend(tag_id)
    sql = "SELECT value FROM transactions WHERE tag_id = #{tag_id}"
      all_values = SqlRunner.run(sql).map {|banana| Transaction.new(banana)}

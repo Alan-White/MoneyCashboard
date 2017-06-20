@@ -4,10 +4,10 @@
 
 
 <div>
-  <% @transactions.each do |transaction| %>
+  <% @transactions.each.reverse_each do |transaction| %>
 
     <p>Transaction id: <%= transaction.id %></p>
-    <p>Value: <%= transaction.value %></p>
+    <p>Value: <%= transaction.value/1.00 %></p>
     <p>Tag: <%= transaction.tag.name %></p>
     <p>Merchant: <%= transaction.merchant.name %></p>
     <p><a href="/transactions/<%= transaction.id %>/edit">Edit this transaction</a></p>
