@@ -3,7 +3,7 @@ require_relative('../models/Merchant.rb')
 require_relative('../models/Transaction.rb')
 require("pry")
 
-# do I need to delete these .delete_all calls after testing the app ????
+
 Transaction.delete_all()
 Tag.delete_all()
 Merchant.delete_all()

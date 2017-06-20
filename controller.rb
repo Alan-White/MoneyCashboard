@@ -37,7 +37,7 @@ end
 
 # ------------------------------------------
 
-post "/transactions/:id/delete" do
+get "/transactions/:id/delete" do
   transaction = Transaction.find(params["id"].to_i)
   transaction.delete()
   redirect to("/transactions")
