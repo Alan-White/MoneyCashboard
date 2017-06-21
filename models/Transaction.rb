@@ -1,15 +1,18 @@
 require_relative('../db/sql_runner')
 require_relative('tag.rb')
 require_relative('merchant.rb')
+require ('pry-byebug')
 
 
 class Transaction
   
-  attr_accessor :value, :tag_id, :merchant_id
+  attr_accessor :date, :value, :tag_id, :merchant_id
   attr_reader :id
 
   def initialize(options)
     @id = options['id'].to_i
+    # binding.pry
+    @date = options['date']
     @value = options['value'].to_f
     @tag_id = options['tag_id'].to_i
     @merchant_id = options['merchant_id'].to_i
@@ -30,10 +33,15 @@ class Transaction
   end
 
   def save()
-    sql = "INSERT INTO transactions (value, tag_id, merchant_id) VALUES (#{@value*100}, #{@tag_id}, #{@merchant_id}) RETURNING *"
+    sql = "INSERT INTO transactions (date, value, tag_id, merchant_id) VALUES ('#{@date}', #{@value*100}, #{@tag_id}, #{@merchant_id}) RETURNING *"
     result = SqlRunner.run(sql)
     id = result.first['id'].to_i
     @id = id
+  end
+
+  def update()
+    sql = "UPDATE transactions SET (date, value, tag_id, merchant_id) = ('#{@date}', #{@value*100}, #{@tag_id}, #{@merchant_id} )WHERE id = #{@id}"
+    SqlRunner.run(sql)
   end
 
   def self.delete_all()
@@ -100,9 +108,6 @@ class Transaction
     #   end
 #--------------------------------------------
 
-    def update()
-      sql = "UPDATE transactions SET (value, tag_id, merchant_id) = (#{@value*100}, #{@tag_id}, #{@merchant_id} )WHERE id = #{@id}"
-      SqlRunner.run(sql)
-    end
+
 
 end

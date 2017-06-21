@@ -14,6 +14,7 @@ name VARCHAR(255)
 
 CREATE TABLE transactions(
 id SERIAL4 PRIMARY KEY,
+date DATE,
 value INT4,
 tag_id INT4 REFERENCES tags(id),
 merchant_id INT4 REFERENCES merchants(id)

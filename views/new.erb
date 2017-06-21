@@ -3,9 +3,11 @@
 
 <form method="POST" action="/transactions"> 
 
+    <label for="add-date"> Date</label>
+      <input type="date" name="date" id="add-date">
+
     <label for="add_value"> Value of transaction</label>
       <input type="text" name="value" id="add_value">
-
 
     <label for="select_tag">Select Tag</label>
       <select name="tag_id" id="select_tag"><% @tags.each do |tag| %>

@@ -26,12 +26,14 @@
  -->  
  <div>
     <p>Total spend on everything: £ <%= sprintf('%.2f',Transaction.total_spent/100) %></p>
-    <p>Total spend on food: £ <%= sprintf('%.2f',Transaction.total_tag_spend(1)/100) %></p>
-    <p>Total spend on social: £ <%= sprintf('%.2f',Transaction.total_tag_spend(2)/100) %></p>
-    <p>Total spend on transport: £ <%= sprintf('%.2f',Transaction.total_tag_spend(3)/100) %></p>
-    <p>Total spend on holidays: £ <%= sprintf('%.2f',Transaction.total_tag_spend(4)/100) %></p>
-  </div>
 
+    <% @tags.each do |banana| %>
+
+    <p>Total spend on <%= banana.name %> : £ <%= sprintf('%.2f',Transaction.total_tag_spend(banana.id)/100) %></p>
+    <% end %>
+
+  </div>
+  <!-- <p>Total spend on holidays: £ <%= sprintf('%.2f',Transaction.total_tag_spend(4)/100) %></p> -->
 
 <%= yield %>
 

@@ -27,26 +27,31 @@ merchant3.save()
 merchant4.save()
 
 transaction1 = Transaction.new({
+  "date" => '2017-03-01',
   "value" => 50.67,
   "tag_id" => tag1.id,
   "merchant_id" => merchant1.id
   })
 transaction2 = Transaction.new({
+  "date" => '2017-04-01',
   "value" => 42.75,
   "tag_id" => tag2.id,
   "merchant_id" => merchant2.id
   })
 transaction3 = Transaction.new({
+  "date" => '2017-05-01',
   "value" => 15.02,
   "tag_id" => tag3.id,
   "merchant_id" => merchant3.id
   })
 transaction4 = Transaction.new({
+  "date" => '2017-06-01',
   "value" => 8.09,
   "tag_id" => tag1.id,
   "merchant_id" => merchant1.id
   })
 transaction5 = Transaction.new({
+  "date" => '2017-06-07',
   "value" => 1500.00,
   "tag_id" => tag4.id,
   "merchant_id" => merchant4.id
