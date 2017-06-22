@@ -6,14 +6,14 @@ require_relative('./models/merchant.rb')
 
 get '/transactions' do
   @transactions = Transaction.all
-  @tags = Tag.all
+  @tags = Tag.all #@tags has to be here because the total_tag_spend is listed on the layout.erb
   erb(:index)
 end
 
 post "/transactions" do
   @transaction = Transaction.new(params)
   @transaction.save()
-  @tags = Tag.all
+  @tags = Tag.all #@tags has to be here because the total_tag_spend is listed on the layout.erb
   erb(:create)
 end
 

@@ -1,19 +1,16 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <title>Alan's MoneyCashboard App</title>
   <link rel="stylesheet" href="/styles.css">
 </head>
 
 <body>
-
   <header>
     <h1>Alan's MoneyCashboard App</h1>
     <h2>"Look after the pennies and the pounds will look after themselves."</h2>
   </header>
-
-  <hr/>
+<hr/>
 
   <div>
     <ul>
@@ -22,9 +19,7 @@
     </ul>
   </div>
 
-<!-- Below: the total_spent is /100 because the input on the new transaction form has no decimal point. i.e. the value is inserted in pence.
- -->  
- <div>
+  <div>
     <p>Total spend on everything: £ <%= sprintf('%.2f',Transaction.total_spent/100) %></p>
 
     <% @tags.each do |banana| %>
@@ -33,10 +28,8 @@
     <% end %>
 
   </div>
-  <!-- <p>Total spend on holidays: £ <%= sprintf('%.2f',Transaction.total_tag_spend(4)/100) %></p> -->
 
 <%= yield %>
-
 
     <br/>
 
